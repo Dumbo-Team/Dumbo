@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from travel import travel_index
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^travel/$', travel_index.index)
 ]
