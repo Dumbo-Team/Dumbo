@@ -6,9 +6,9 @@ import json
 from UserMapModel.models import UserMap
  
 def index(request):
-    context          = {}
-    context['hello'] = 'Hello World!'
-
+    context = {}
+    return render(request, 'travel/index.html', context)
+    
     visited_location = UserMap.objects.filter(user_id=1)
     data = []
     geoCoordMap = {}
@@ -20,3 +20,6 @@ def index(request):
     context['geoCoordMap'] = json.dumps(geoCoordMap)
 
     return render(request, 'travel/index.html', context)
+
+def album(request):
+    return render(request, 'travel/album.html')

@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static "css/touchTouch.css" %}">
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
+        <script src="{% static "js/jquery.js" %}"></script>
+        <script src="{% static "js/jquery-migrate-1.1.1.js" %}"></script>
+        <script src="{% static "js/script.js" %}"></script>
+        <script src="{% static "js/jquery.ui.totop.js" %}"></script>
+        <script src="{% static "js/superfish.js" %}"></script>
+        <script src="{% static "js/jquery.equalheights.js" %}"></script>
+        <script src="{% static "js/jquery.mobilemenu.js" %}"></script>
+        <script src="{% static "js/touchTouch.jquery.js" %}"></script>
+        <script src="{% static "js/jquery.easing.1.3.js" %}"></script>
+        <script>
+            $(document).ready(function(){
+              $().UItoTop({ easingType: 'easeOutQuart' });
+              $('.gallery a.gal').touchTouch();
+            })
+        </script>
+    </head>
+    <body>
+      <div class="main">
+        <div class="content">
+          <div class="container_12">
+            <div class="grid_12">
+              <div class="box bx1">
+                <div class="inner">
+                  <h3>Gallery</h3>
+                  <div class="gallery">
+                    <a href="{% static "images/big7.jpg" %}" class="gal"><img src="{% static "images/page3_img1.jpg" %}" alt=""></a>
+                    <a href="{% static "images/big8.jpg" %}" class="gal"><img src="{% static "images/page3_img2.jpg" %}" alt=""></a>
+                    <a href="{% static "images/big9.jpg" %}" class="gal"><img src="{% static "images/page3_img3.jpg" %}" alt=""></a>
+                    <a href="{% static "images/big10.jpg" %}" class="gal"><img src="{% static "images/page3_img4.jpg" %}" alt=""></a>
+                    <a href="{% static "images/big11.jpg" %}" class="gal"><img src="{% static "images/page3_img5.jpg" %}" alt=""></a>
+                    <a href="{% static "images/big12.jpg" %}" class="gal"><img src="{% static "images/page3_img6.jpg" %}" alt=""></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>

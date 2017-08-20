@@ -16,9 +16,18 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from login import login_index
 from travel import travel_index
+from home import home_index
+from cooperation import product_info
+from technology import technology_index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^travel/$', travel_index.index)
+    url(r'^login/$', login_index.login),
+    url(r'^home/$', home_index.home),
+    url(r'^travel/$', travel_index.index),
+    url(r'^travel/album$', travel_index.album),
+    url(r'^product/$', product_info.product),
+    url(r'^technology/$', technology_index.technology_info),
 ]
