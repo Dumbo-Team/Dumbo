@@ -1,0 +1,231 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static "libs/bootstrap-3.3.7/css/bootstrap.min.css" %}">
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"> <!--确保移动设备适当的绘制和触屏缩放 -->
+        <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--         <script>
+$(document).ready(function(){
+        $("#s_test").hover(function(){
+     $("s_float").css("display","block");
+ },function(){
+    $("s_float").css("display","none");
+    alert("hover");
+});
+     
+});
+</script> -->
+  
+        <style>
+
+        .wrapper {
+          background: #009393;
+   /*       background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+          background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);*/
+          opacity: 0.8;
+          position: absolute;
+          /*top: 50%;*/
+          left: 0;
+          width: 100%;
+          height: auto;
+          min-height:500px; 
+          min-width: 800px;
+          /*margin-top: -250px;*/
+          overflow: hidden;
+        }
+        .container {
+          min-width: 800px; /*此行控制页面不随窗口缩放而缩放*/
+          /*width: 800px;*/
+          width: 80%;
+          margin: 0 auto;
+          padding: 80px 0;
+          text-align: center;
+          position: relative;
+        }
+        .speaking{
+          position: relative;
+          background-color: #FFFFFF;
+          width: 100%;  
+          float: center;
+          border:1px solid #000000;
+          margin: 10px;
+          height:auto; 
+          overflow:hidden
+        }
+       
+        .title{
+          position: relative;
+          float: left;
+          width: 100%;
+          margin-left: 4px;
+          /*overflow:hidden;*/
+        }
+        .s_flag{
+          position: relative;
+          float: left;
+          margin-top: 10px;
+          margin-left: 10px;
+      
+
+          /*white-space:nowrap;*/
+        }
+        .s_title{
+          position: relative;
+          float: left;
+           white-space:nowrap;
+        }
+        .s_datetime{
+          position: relative;
+          float: left;
+          margin-top: 10px;
+          margin-left: 10px;
+           white-space:nowrap;
+          /*width:40%;*/
+        }
+        .s_paragraph{
+          /*white-space:nowrap;*/
+          text-align: left;
+          width:90%;
+          margin-top:5px;
+          margin-bottom:5px;
+          margin-left:10px;
+          margin-right:10px;
+          position: relative;
+          float: left;
+        }
+        .s_picture{
+          position: relative;
+          float: left;
+          width: 100%;
+          margin:10px;
+
+        }
+         .s_gal{
+          position: relative;
+          float: left;
+          margin: 4px;
+     
+          height: 150px;
+          width: 150px;
+        }
+        .s_logo{
+          position: relative;
+          float: left;
+          margin-top: 10px;
+          margin-left: 10px;
+          margin-right: 40px;
+        }
+        .header{
+          background-color: #fff;
+          height: 80px;
+          min-width:800px;
+        }
+        ol, ul {
+         list-style: none;
+        }
+      .header .nav{float:left;height:53px;line-height:53px;width:60%;}
+      .header .nav li{float:left;position:relative;}
+      .header .nav li a{display:block;padding:0 20px;font-weight:bold;font-size:14px;border-bottom:2px transparent solid;}
+      .header .nav li.current a{border-bottom:2px #be082e solid;color:#be082e}
+
+      .header .nav .slist{z-index:2;position:absolute;top:55px;padding-top:9px;display:none;left:-20px}
+      .header .nav .slist dl{background-color:#2f3440;float:left;}
+      .header .nav .slist dd{float:left;text-align:center;width:140px;line-height:28px}
+      .header .nav .slist dd a{padding:0;color:#dce0e5;border-bottom:1px #404759 solid;border-right:1px #404759 solid;}
+      .header .nav .slist dd a:hover{color:#fff}
+      .header .nav .slist.c2{width:280px;}
+      .header .nav .slist.c2 dd{padding:8px 0;line-height:40px;border-bottom:1px #404759 solid;}
+      .header .nav .slist.c2 dd a{border-bottom:0;}
+      .header .nav li  a:hover +  .slist{
+        display: block;
+      }
+      .header .nav .slist:hover{
+        display: block;
+      }
+
+      </style>
+      
+      
+      
+    </head>
+    <body>
+
+      <div class="header">
+       <!--  <h1>导航栏</h1> -->
+       <span><a href="www.baidu.com"><img class="s_logo" src="{% static "images/s_logo.png" %}" alt=""></a></span>
+       <div class="nav">
+            <ul>
+                <li><a href="//www.butel.com/"> 首页</a></li>
+                <li class="current"><a href="#">可视协同</a></li>    
+                <li>
+                <a class="test" id="s_test"  href="#">可视硬件</a>
+               <div class="slist c2" id="s_float">
+                  <dl>
+                    <dd><a href="#">可视家庭盒子</a></dd>
+                      <dd><a href="#">可视平板</a></dd>
+                      <dd><a href="#" target="_blank">可视电话</a></dd>
+                      <dd><a href="#" target="_blank">可视会议盒子</a></dd>
+                      <dd><a href="#">移动直播机</a></dd>
+                      <dd><a href="#">专业直播台</a></dd>
+                  </dl>
+                </div>
+                </li>
+                <li>
+                  <a href="#">行业方案</a>
+                  <div class="slist c2">
+                  <dl>
+                      <dd><a href="#">可视媒体</a></dd>
+                      <dd><a href="#">可视医疗</a></dd>
+                      <dd><a href="#">可视教育</a></dd>
+                      <dd><a href="#">可视农业</a></dd>
+                      <dd><a href="#">可视金融</a></dd>
+                  </dl>
+                </div>
+                </li>
+            </ul>
+        </div>
+       <span></span>
+       <span></span>
+      </div>
+      <div class="wrapper">
+        <div class="container">
+          <div class="speaking">
+            <div class = "title">
+              <span class = "s_flag"><img src="{%static "images/s_title.png" %}" alt="Big Boat"></span>
+              <span class ="s_title"><h4> &nbsp; &nbsp;title_title_title</h4></span>
+              <span class = "s_datetime"><p>2017/04/08 10:42</p></span>
+             </div>
+            <div class = "s_paragraph">
+              <p>&nbsp; &nbsp;&nbsp; &nbsp;夫天下有大勇者，志不能测，刚不能制，猝然临之而不惊，无故加之而不怒，此其志甚远，所怀甚大也。所怀者何？天下有饥者，如己之饥，天下有溺者，如己之溺耳。民族危急，别亲离子而赴水火,易面事敌而求大同。风萧水寒，旌霜履血，或成或败，或囚或殁，人不知之，乃至殒后无名
+              </p>
+            </div>
+            <div class = "s_pictures">
+              <img class="s_gal" src="{% static "images/s_pic1.jpg" %}" alt="">
+              <img class="s_gal" src="{% static "images/s_pic2.jpg" %}" alt="">
+              <img class="s_gal" src="{% static "images/s_pic3.jpg" %}" alt="">
+              <img class="s_gal" src="{% static "images/s_pic1.jpg" %}" alt="">
+              <img class="s_gal" src="{% static "images/s_pic2.jpg" %}" alt="">
+              <img class="s_gal" src="{% static "images/s_pic3.jpg" %}" alt="">
+            </div>
+          </div>
+          <div class="speaking">
+            <div class = "title">
+              <span class = "s_flag"><img src="{%static "images/s_title.png" %}" alt="Big Boat"></span>
+              <span class ="s_title"><h4> &nbsp; &nbsp;title_title_title</h4></span>
+              <span class = "s_datetime"><p>2017/04/08 10:42</p></span>
+            </div>
+            <div class = "s_paragraph">
+              <p>&nbsp; &nbsp;&nbsp; &nbsp;夫天下有大勇者，志不能测，刚不能制，猝然临之而不惊，无故加之而不怒，此其志甚远，所怀甚大也。所怀者何？天下有饥者，如己之饥，天下有溺者，如己之溺耳。民族危急，别亲离子而赴水火,易面事敌而求大同。风萧水寒，旌霜履血，或成或败，或囚或殁，人不知之，乃至殒后无名
+              </p>
+            </div>
+            <div class = "s_pictures">
+              <img class="s_gal" src="{% static "images/s_pic1.jpg" %}" alt="">
+              <img class="s_gal" src="{% static "images/s_pic2.jpg" %}" alt="">
+              <img class="s_gal" src="{% static "images/s_pic3.jpg" %}" alt="">
+            </div>
+        </div>
+      </div>
+    </body>
+</html>
