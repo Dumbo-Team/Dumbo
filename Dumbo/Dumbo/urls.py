@@ -15,12 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+import sys
+import os
+
+path = os.getcwd()
+path = path + '\Dumbo'
+sys.path.append(path)
 
 from login import login_index
 from travel import travel_index
 from home import home_index
 from cooperation import product_info
 from technology import technology_index
+from sport_delicacy import sport_delicacy_index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -30,4 +37,5 @@ urlpatterns = [
     url(r'^travel/album$', travel_index.album),
     url(r'^product/$', product_info.product),
     url(r'^technology/$', technology_index.technology_info),
+    url(r'^sport_delicacy/$', sport_delicacy_index.test),
 ]

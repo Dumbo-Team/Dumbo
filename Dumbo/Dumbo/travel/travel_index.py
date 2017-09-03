@@ -15,7 +15,7 @@ def index(request):
     for item in visited_location:
         data.append({'name':item.name,'vlaue':20})
         geoCoordMap[item.name] = [item.longtitude, item.latitude]
-        print item.name
+        print (item.name)
     context['visited_location'] = json.dumps(data)
     context['geoCoordMap'] = json.dumps(geoCoordMap)
 
