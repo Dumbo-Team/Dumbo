@@ -301,12 +301,8 @@ $(document).ready(function(){
           span_flag.setAttribute("class","s_flag");
           title.appendChild(span_flag);
           var flag_img = document.createElement("img");
-          flag_img_path_str += "{%static \'";
-          flag_img_path_str +=  speak_datas.flag_img_path;
-          flag_img_path_str += "\' %}";
-          alert(flag_img_path_str);
-          tmp = "{%static 'images/s_title.png' %}";
-          alert(tmp);
+
+          flag_img_path_str +=  speak_datas.flag_img_path
           flag_img.setAttribute("src",speak_datas.flag_img_path);
           flag_img.setAttribute("alt","Big Bote");
           span_flag.appendChild(flag_img)
@@ -337,8 +333,6 @@ $(document).ready(function(){
           for(var i = 0; i < imgs.length; i++){
               var img = document.createElement("img");
               img.setAttribute("class","s_gal");
-              var tem_path = "{% static \""
-              tem_path += imgs[i] + "\" %}";
               img.setAttribute("src",imgs[i]);
               img.setAttribute("alt","images");
               pictures.appendChild(img);
