@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'UserModel',
     'UserMapModel',
+    'MoodTalkModel',
 ]
 
 MIDDLEWARE = [

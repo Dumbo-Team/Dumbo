@@ -72,9 +72,10 @@ $(document).ready(function(){
           /*white-space:nowrap;*/
         }
         .s_title{
-          position: relative;
-          float: left;
+            position: relative;
+           float: left;
            white-space:nowrap;
+           /*white-space:pre;*/
         }
         .s_datetime{
           position: relative;
@@ -84,8 +85,8 @@ $(document).ready(function(){
            white-space:nowrap;
           /*width:40%;*/
         }
-        .s_paragraph{
-          /*white-space:nowrap;*/
+        .s_paragraph{/*
+          white-space:nowrap;*/
           text-align: left;
           width:90%;
           margin-top:5px;
@@ -94,6 +95,7 @@ $(document).ready(function(){
           margin-right:10px;
           position: relative;
           float: left;
+          /*white-space:pre;*/
         }
         .s_pictures{
           position: relative;
@@ -199,7 +201,7 @@ $(document).ready(function(){
         <div class="container">
           <div class="speaking">
             <div class = "title">
-              <span class = "s_flag"><img src="{%static "images/s_title.png" %}" alt="Big Boat"></span>
+              <span class = "s_flag"><img src="{%static 'images/s_title.png' %}" alt="Big Boat"></span>
               <span class ="s_title"><h4> &nbsp; &nbsp;title_title_title</h4></span>
               <span class = "s_datetime"><p>2017/04/08 10:42</p></span>
              </div>
@@ -208,17 +210,17 @@ $(document).ready(function(){
               </p>
             </div>
             <div class = "s_pictures">
-              <img class="s_gal" src="{% static "images/s_pic1.jpg" %}" alt="">
-              <img class="s_gal" src="{% static "images/s_pic2.jpg" %}" alt="">
-              <img class="s_gal" src="{% static "images/s_pic3.jpg" %}" alt="">
-              <img class="s_gal" src="{% static "images/s_pic1.jpg" %}" alt="">
-              <img class="s_gal" src="{% static "images/s_pic2.jpg" %}" alt="">
-              <img class="s_gal" src="{% static "images/s_pic3.jpg" %}" alt="">
+              <img class="s_gal" src="{% static 'images/s_pic1.jpg' %}" alt="">
+              <img class="s_gal" src="{% static 'images/s_pic2.jpg' %}" alt="">
+              <img class="s_gal" src="{% static 'images/s_pic3.jpg' %}" alt="">
+              <img class="s_gal" src="{% static 'images/s_pic1.jpg' %}" alt="">
+              <img class="s_gal" src="{% static 'images/s_pic2.jpg' %}" alt="">
+              <img class="s_gal" src="{% static 'images/s_pic3.jpg' %}" alt="">
             </div>
           </div>
           <div class="speaking">
             <div class = "title">
-              <span class = "s_flag"><img src="{%static "images/s_title.png" %}" alt="Big Boat"></span>
+              <span class = "s_flag"><img src="{%static 'images/s_title.png' %}" alt="Big Boat"></span>
               <span class ="s_title"><h4> &nbsp; &nbsp;title_title_title</h4></span>
               <span class = "s_datetime"><p>2017/04/08 10:42</p></span>
             </div>
@@ -227,11 +229,125 @@ $(document).ready(function(){
               </p>
             </div>
             <div class = "s_pictures">
-              <img class="s_gal" src="{% static "images/s_pic1.jpg" %}" alt="">
-              <img class="s_gal" src="{% static "images/s_pic2.jpg" %}" alt="">
-              <img class="s_gal" src="{% static "images/s_pic3.jpg" %}" alt="">
+              <img class="s_gal" src="{% static 'images/s_pic1.jpg' %}" alt="">
+              <img class="s_gal" src="{% static 'images/s_pic2.jpg' %}" alt="">
+              <img class="s_gal" src="{% static 'images/s_pic3.jpg' %}" alt="">
             </div>
         </div>
       </div>
+      <script type="text/javascript">
+        function addLoadEvent(func){
+          var oldonload = window.onload;
+          if(typeof window.onload != 'function'){
+            window.onload = func;
+          }else{
+            window.onload = function(){
+              oldonload();
+              func();
+            }
+          }
+        }
+        function insertAfter(newElement,targetElement){
+          var parent = targetElement.parentNode;
+          if(parent.lastChild == targetElement){
+            parent.appendChild(newElement);
+          }else{
+            parent.insertBefore(newElement,targetElement.nextSibling);
+          }
+        }
+
+        var arry =  new Array(4);
+        arry[0] = "/static/images/s_pic1.jpg";
+        arry[1] = "/static/images/s_pic2.jpg";
+        arry[2] = "/static/images/s_pic3.jpg";
+        arry[3] = "/static/images/s_pic1.jpg";
+        var test_data = {"title_str":"zhenghongwe1",
+        "flag_img_path":"/static/images/s_title.png",
+        "datetime_str":"2017/14/42",
+        "paragraph_str":"天将降大人与是人也，必先苦其心志",
+        "img_paths":arry
+        }
+
+      
+        function add_speak_node(speak_datas){
+          if(!document.createElement) return false;          
+          if(!document.createTextNode) return false;
+          if(!document.getElementById) return false;
+          if(!document.getElementsByTagName) return false;
+
+          container = document.getElementsByClassName("container")[0];
+          var flag_img_path_str = ""; 
+
+          var title_str = "    ";
+          title_str += speak_datas.title_str;
+          var datetime_str = speak_datas.datetime_str;
+          var paragraph_str = "    ";
+          paragraph_str += speak_datas.paragraph_str;
+          var speaking = document.createElement("div");
+          speaking.setAttribute("class","speaking");
+          container.appendChild(speaking);
+          // insertAfter()
+          var title = document.createElement("div");
+          title.setAttribute("class","title");
+          var paragraph = document.createElement("div");
+          paragraph.setAttribute("class","s_paragraph");
+          var pictures = document.createElement("div");          
+          pictures.setAttribute("class","s_pictures");
+          speaking.appendChild(title);
+          speaking.appendChild(paragraph);
+          speaking.appendChild(pictures);
+
+          var span_flag = document.createElement("span");
+          span_flag.setAttribute("class","s_flag");
+          title.appendChild(span_flag);
+          var flag_img = document.createElement("img");
+          flag_img_path_str += "{%static \'";
+          flag_img_path_str +=  speak_datas.flag_img_path;
+          flag_img_path_str += "\' %}";
+          alert(flag_img_path_str);
+          tmp = "{%static 'images/s_title.png' %}";
+          alert(tmp);
+          flag_img.setAttribute("src",speak_datas.flag_img_path);
+          flag_img.setAttribute("alt","Big Bote");
+          span_flag.appendChild(flag_img)
+
+          var span_title = document.createElement("span");
+          span_title.setAttribute("class","s_title");
+          span_title.setAttribute("style","white-space:pre");
+          title.appendChild(span_title);
+          title_h = document.createElement("h4");
+          title_text = document.createTextNode(title_str);
+          span_title.appendChild(title_h);
+          title_h.appendChild(title_text);
+
+          var span_datatime = document.createElement("span");
+          span_datatime.setAttribute("class","s_datetime");
+          title.appendChild(span_datatime);
+          datetime_p = document.createElement("p");
+          datetime_text = document.createTextNode(datetime_str);
+          span_datatime.appendChild(datetime_p);
+          datetime_p.appendChild(datetime_text);
+
+          paragraph_p = document.createElement("p");       
+          paragraph_p.setAttribute("style","white-space:pre");
+          paragraph_text = document.createTextNode(paragraph_str);
+          paragraph.appendChild(paragraph_p);
+          paragraph_p.appendChild(paragraph_text);
+          var imgs = speak_datas.img_paths;
+          for(var i = 0; i < imgs.length; i++){
+              var img = document.createElement("img");
+              img.setAttribute("class","s_gal");
+              var tem_path = "{% static \""
+              tem_path += imgs[i] + "\" %}";
+              img.setAttribute("src",imgs[i]);
+              img.setAttribute("alt","images");
+              pictures.appendChild(img);
+          }
+        }
+       function adaptaer(){
+          add_speak_node(test_data);
+       }
+        window.onload = adaptaer();
+      </script>
     </body>
 </html>
