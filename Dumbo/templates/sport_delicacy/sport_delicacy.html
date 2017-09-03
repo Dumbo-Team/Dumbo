@@ -95,11 +95,11 @@ $(document).ready(function(){
           position: relative;
           float: left;
         }
-        .s_picture{
+        .s_pictures{
           position: relative;
           float: left;
+          margin-left:10px;
           width: 100%;
-          margin:10px;
 
         }
          .s_gal{
@@ -125,18 +125,18 @@ $(document).ready(function(){
         ol, ul {
          list-style: none;
         }
-      .header .nav{float:left;height:53px;line-height:53px;width:60%;}
-      .header .nav li{float:left;position:relative;}
-      .header .nav li a{display:block;padding:0 20px;font-weight:bold;font-size:14px;border-bottom:2px transparent solid;}
+      .header .nav{float:left;margin-top:20px;height:53px;line-height:53px;width:70%;}
+      .header .nav li{float:left;position:relative;margin-left: 10px;}
+      .header .nav li a{display:block;padding:0 20px;font-weight:bold;font-size:16px;border-bottom:2px transparent solid;}
       .header .nav li.current a{border-bottom:2px #be082e solid;color:#be082e}
 
-      .header .nav .slist{z-index:2;position:absolute;top:55px;padding-top:9px;display:none;left:-20px}
-      .header .nav .slist dl{background-color:#2f3440;float:left;}
-      .header .nav .slist dd{float:left;text-align:center;width:140px;line-height:28px}
-      .header .nav .slist dd a{padding:0;color:#dce0e5;border-bottom:1px #404759 solid;border-right:1px #404759 solid;}
-      .header .nav .slist dd a:hover{color:#fff}
-      .header .nav .slist.c2{width:280px;}
-      .header .nav .slist.c2 dd{padding:8px 0;line-height:40px;border-bottom:1px #404759 solid;}
+      .header .nav .slist{z-index:1;position:absolute;top:55px;padding-top:9px;display:none;left:10px}
+      .header .nav .slist dl{background-color:#fff;float:left;opacity: 0.5;}
+      .header .nav .slist dd{float:left;text-align:center;width:100px;line-height:20px}
+      .header .nav .slist dd a{padding:0;color:#000;opacity:1;border-bottom:1px #404759 solid;border-right:1px #404759 solid;}
+      .header .nav .slist dd a:hover{font-size:20px;}
+      .header .nav .slist.c2{width:100px;}
+      .header .nav .slist.c2 dd{padding:8px 0;line-height:25px;border-bottom:1px #404759 solid;}
       .header .nav .slist.c2 dd a{border-bottom:0;}
       .header .nav li  a:hover +  .slist{
         display: block;
@@ -144,7 +144,13 @@ $(document).ready(function(){
       .header .nav .slist:hover{
         display: block;
       }
-
+      .header #s_head_pic{
+        position: relative;
+        float: right;
+        margin-left: 10px;
+        margin-bottom: -10px;
+        padding-right: -10px;
+      }
       </style>
       
       
@@ -154,39 +160,39 @@ $(document).ready(function(){
 
       <div class="header">
        <!--  <h1>导航栏</h1> -->
-       <span><a href="www.baidu.com"><img class="s_logo" src="{% static "images/s_logo.png" %}" alt=""></a></span>
+       <span><a href="http://www.baidu.com"><img class="s_logo" src="{% static "images/s_logo.png" %}" alt=""></a></span>
        <div class="nav">
             <ul>
-                <li><a href="//www.butel.com/"> 首页</a></li>
-                <li class="current"><a href="#">可视协同</a></li>    
+                <li class="current"><a href="//www.butel.com/"> 首页</a></li>
+                <li><a href="#">韶华追忆</a>
+                <div class="slist c2">
+                  <dl>
+                      <dd><a href="#">旅游</a></dd>
+                      <dd><a href="#">运动|美食</a></dd>
+                      <dd><a href="#">书屋|随笔</a></dd>
+                  </dl>
+                </div>
+                </li>
                 <li>
-                <a class="test" id="s_test"  href="#">可视硬件</a>
+                <a class="test" id="s_test"  href="#">技术分享</a>
                <div class="slist c2" id="s_float">
                   <dl>
-                    <dd><a href="#">可视家庭盒子</a></dd>
-                      <dd><a href="#">可视平板</a></dd>
-                      <dd><a href="#" target="_blank">可视电话</a></dd>
-                      <dd><a href="#" target="_blank">可视会议盒子</a></dd>
-                      <dd><a href="#">移动直播机</a></dd>
-                      <dd><a href="#">专业直播台</a></dd>
+                    <dd><a href="#">C/C++</a></dd>
+                      <dd><a href="#">Python</a></dd>
+                      <dd><a href="#">Linux</a></dd>
+                      <dd><a href="#" target="_blank">Docker</a></dd>
+                      <dd><a href="#">前端</a></dd>
                   </dl>
                 </div>
                 </li>
                 <li>
-                  <a href="#">行业方案</a>
-                  <div class="slist c2">
-                  <dl>
-                      <dd><a href="#">可视媒体</a></dd>
-                      <dd><a href="#">可视医疗</a></dd>
-                      <dd><a href="#">可视教育</a></dd>
-                      <dd><a href="#">可视农业</a></dd>
-                      <dd><a href="#">可视金融</a></dd>
-                  </dl>
-                </div>
+                  <a href="#">合作</a>
                 </li>
+                <li ><a href="#">关于</a></li> 
+                <li ><a href="#">订阅</a></li> 
             </ul>
         </div>
-       <span></span>
+       <span id = "s_head_pic"><a href="http://www.baidu.com"><img src="{% static "images/s_head.jpg" %}" alt=""></a></span>
        <span></span>
       </div>
       <div class="wrapper">
