@@ -3,163 +3,550 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static "css/picshade/index.css" %}" />
-        <link rel="stylesheet" href="{% static "css/carousel/index.css" %}" />
+        <link rel="stylesheet" href="{% static "css/jquery.fullPage.css" %}" />
+        <link rel="stylesheet" href="{% static "css/libs/bootstrap-3.3.7/css/bootstrap.min.css" %}" />
+        <!--content css-->
         <style type="text/css">
-          <!--
-          #www_zzjs_net {
-            margin: 0 auto;
-            background: #FFF;
-            overflow:hidden;
-            border: 0px dashed #CCC;
-            width: 1000px;
-            height:245px;
-          }
-          #indemo {
-            float: left;
-            width: 800%;
-          }
-          #demo1 {
-            float: left;
-          }
-          #demo2 {
-            float: left;
-          }
-          -->
+            body{
+              /*background-color: #f00;*/
+                /*min-width: 1000px;
+                padding: 0;
+                margin: 0;
+                background: #fff;
+                height: 100vh;
+                overflow: hidden;*/
+            }
+            body,input,textarea,button,select { font: 16px/1.5 tahoma,arial,'Hiragino Sans GB','寰蒋闆呴粦',sans-serif}
+            .team_name{
+                float: left;
+                height: 60px;
+                font-size: 40px;
+                left: 0;
+                position: fixed;
+                z-index:99;
+                padding-left: 150px;
+                padding-top:15px;
+                color: #fff;
+                transition: all .2s linear;
+            }
+            /*头部导航字体设置*/
+            /*.nav{
+                width: 100%;
+                height: 60px;
+                position: fixed;
+                top:0;
+                left: 0;
+                z-index:99;
+                transition: all .2s linear;
+            }
+            .nav_a{
+                text-align: right;
+                padding-right: 100px;
+            }
+            .nav_a a{
+                display: inline-block;
+                color: #000;
+                font-size: 20px;
+                padding: 0 20px;
+                text-decoration: none;
+            }*/
+            /*end 头部导航字体设置*/
+
+            /*end 右侧小圆圈 */
+            .nav_left{
+                background: url("{% static "images/left.png" %}");
+                left: 40px;
+            }
+            .nav_right{
+                background: url("{% static "images/right.png" %}");
+                right: 40px;
+            }
+            /*第一个导航✌页面*/
+            .page_one .nav_active_img{
+                opacity: 1;
+            }
+            .page_one{
+                width: 100%;
+                position: relative;
+                height: 100vh;
+                overflow: hidden;
+                padding: 0;
+            }
+            .page_one img{
+                position: absolute;
+                min-width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                opacity: 0;
+                transition: all .5s linear;
+            }
+            .page_one .nav_left,.page_one .nav_right{
+                width: 31px;
+                height: 59px;
+                position: absolute;
+                top: 0;
+                bottom:0;
+                margin: auto;
+                z-index:999;
+                cursor: pointer;
+            }
+            /*page two*/
+
+            .bg31{width:100%;text-align:center;margin-bottom:50px}
+            .bg31 h3{font-size:38px;color:#405a76;letter-spacing:4px;font-weight:normal;line-height:40px;margin-bottom:11px}
+            .bg31 p{font-size:24px;color:#a7bace;}
+            .bg31{width:100%;text-align:center;margin-bottom:50px}
+            .bg31 h3{font-size:38px;color:#405a76;letter-spacing:4px;font-weight:normal;line-height:40px;margin-bottom:11px}
+            .bg31 p{font-size:24px;color:#a7bace;}
+
+
+            .bg32{width:1355px;margin:0 auto;height:330px}
+            .bg32 li{width:375px;margin:0 5px;float:left;position:relative;overflow:hidden;height:330px;}
+            .bg32 li .shadow{position:absolute;top:330px;left:0;width:100%;height:100%;background-color:#d50e4c;transition: all 0.6s;}
+            .bg32 li .shadow_text{position:absolute;color:#fff;font-size:16px;width:80%;top:330px;left:10%;transition: all 1.6s;}
+
+            .bg32 li:hover .shadow{top:0;}
+            .bg32 li:hover .shadow_text{top:15%;}
+
+            .yewu_li_1{bottom:-50px;transition: all 0.5s;}
+            .yewu_li_2{bottom:-50px;transition: all 0.5s;}
+            .yewu_li_3{bottom:-50px;transition: all 0.5s;}
+            .yewu_li_4{bottom:-50px;transition: all 0.5s;}
+            .active .yewu_li_1{bottom:0;transition-delay: .5s;}
+            .active .yewu_li_2{bottom:0;transition-delay: .7s;}
+            .active .yewu_li_3{bottom:0;transition-delay: 1s;}
+            .active .yewu_li_4{bottom:0;transition-delay: 1.2s;}
+            /*page_three*/
+            .page_three{
+                margin-top: 0px;
+                z-index:999;
+            }
+            .page_three_title{
+                width:100%;
+                text-align:center;
+                /*margin-bottom:-50px*/
+            }
+            .page_three_title h3{
+                font-size:38px;
+                color:#405a76;
+                letter-spacing:4px;
+                font-weight:normal;
+                line-height:0px;
+            }
+            .page_three_title p{
+                font-size:24px;
+                color:#a7bace;
+            }
+            .page_three_scroll{
+                position:relative;
+                width:100%;
+                overflow:hidden;
+                height:418px
+            }
+            .page_three_scroll ul{
+                position:absolute;
+                top:0;
+                left:0
+            }
+            .page_three_scroll li{
+                width:470px;
+                float:left;
+                text-align:center;
+                margin:0 2px
+            }
+            .page_three_scroll li img{
+                /*display:block;*/
+                /*height:300px;*/
+                width:470px;
+                /*margin-bottom:6px*/
+            }
+            .page_three_scroll li  h3{
+                margin-bottom:14px;
+                font-weight:bold;
+            }
+            .page_three_scroll li  h3 a{
+                font-size:24px;
+                color:#405a76;
+                border-bottom:2px #00bc9c solid;
+                padding-bottom:10px
+            }
+            .page_three_scroll li  p{
+                font-size:14px;
+                color:#a7bace
+            }
         </style>
         <style type="text/css">
-          *{
-            padding: 0;
-            margin: 0;
-          }
-          html,body{
-            height: 100%;
-          }
-          #container {
-              width: 100%;
-              height: 500px;
-              overflow: hidden;
-          }
-          .sections,.section {
-            height:100%;
-          }
-          #container,.sections {
-            position: relative;
-          }
-          .section {
-            background-color: #000;
-            background-size: cover;
-            background-position: 50% 50%;
-            text-align: center;
-            color: white;
-          }
-          #section0 {
-            background-image: url("{% static "images/page1_img1.jpg" %}");
-          }
-          #section1 {
-            background-image: url("{% static "images/page1_img2.jpg" %}");
-          }
-          #section2 {
-            background-image: url("{% static "images/page1_img3.jpg" %}");
-          }
-          #section3 {
-            background-image: url("{% static "images/page1_img4.jpg" %}");
-          }
+            
+            .footer{background-color:#2f4052;padding:44px 0 47px;color:#95a3b2;font-size:14px}
+            .footer .lay1188{overflow:hidden;}
+            .footer .ft-helper{overflow:hidden;float:left;}
+            .footer .ft-helper dl{float:left;width:150px}
+            .footer .ft-helper dt a{margin-left:40px;color:#fff;font-weight:bold;display:block;margin-bottom:12px}
+            .footer .ft-helper dd a{display:block;color:#95a3b2;line-height:28px;}
+            .footer .ft-ser{float:left;margin-left:120px}
+            .copyright{background-color:#283645;text-align:center;font-size:13px;color:#95a3b2}
+            .copyright p{position:absolute;bottom:0px;padding:10px 0}
+            .section6{background:url(../images/section6.jpg) no-repeat 0 0/100% 100%}
+            /*.index_footer .footer{background-color:transparent}*/
+            .index_footer .footer .ft-helper dt a{font-size:18px;margin-top:100px}
+            .index_footer .footer .ft-helper dd a{font-size:15px;color:#fff;line-height:32px}
+            .index_footer .footer .ft-ser{margin-top:100px}
+            .index_footer .footer .ft-ser img{margin-right:32px}
+            .index_footer .footer .ft-helper .team_desc{text-align: justify;font-size:15px;color:#fff;line-height:32px}
+        </style>
+        <style type="text/css">
+            .nav{
+                float: right;
+                /*width: 100%;*/
+                height: 60px;
+                position: fixed;
+                top:0;
+                /*left: 0;*/
+                right: 0;
+                z-index:99;
+                transition: all .2s linear;
+            }
+            /*.header{
+                background-color: #fff;
+                height: 80px;
+                min-width:800px;
+            }*/
+            .nav1{
+                text-align: right;
+                padding-right: 100px;
+            }
+            /**/
+            .s_logo{
+                position: relative;
+                float: left;
+                margin-top: 10px;
+                margin-left: 10px;
+                margin-right: 40px;
+            }
+            ol, ul {
+                list-style: none;
+            }
+            .header .nav{height:53px;line-height:53px;}
+            .header .nav li{float:left;position:relative;display: inline-block;padding-right: 30px;}
+            .header .nav li a{display:block;padding:0 20px;font-weight:bold;font-size:14px;font-size: 30px;}
+            .header .nav li.current a{color:#be082e;font-size: 30px;}
+
+            .header .nav .slist{z-index:2;position:absolute;top:55px;padding-top:9px;display:none;left:-20px}
+            .header .nav .slist dl{background-color:#2f3440;float:left;}
+            .header .nav .slist dd{float:left;text-align:center;width:140px;line-height:28px}
+            .header .nav .slist dd a{padding:0;font-size: 20px;}
+            .header .nav .slist dd a:hover{font-size: 20px;}
+            .header .nav .slist.c2{width:280px;}
+            .header .nav .slist.c2 dd{padding:8px 0;line-height:40px;}
+            .header .nav .slist.c2 dd a{border-bottom:0;font-size: 20px;}
+            .header .nav li  a:hover +  .slist{
+                display: block;
+            }
+            .header .nav .slist:hover{
+                display: block;
+            }
+
+            .change_color{
+                color: #fff;
+            }
+            .black_nav a,.black_nav{
+                color: #000;
+            }
+            a{text-decoration : none} 
         </style>
     </head>
     <body>
-      <!--主页轮播-->
-      <div id="container">
-        <div class="sections">
-          <div class="section" id="section0"><h3>this is the page1</h3></div>
-          <div class="section" id="section1"><h3>this is the page2</h3></div>
-          <div class="section" id="section2"><h3>this is the page3</h3></div>
-          <div class="section" id="section3"><h3>this is the page4</h3></div>
+        <!-- <table class="nav white_nav">
+            <tr>
+                <td style="width:170px;padding-left: 100px">
+                    <span class="masthead-logo"></span>
+                    <span class="masthead-logo_1"></span>
+                </td>
+                <td class="team_name">Dumbo飞象</td>
+                <td class="nav_a">
+                    <a target="_blank" href="">首页</a>
+                    <a target="_blank" href="">韶华追忆</a>
+                    <a target="_blank" href="">技术分享</a>
+                    <a target="_blank" href="">关于</a>
+                    <a target="_blank" href="">订阅</a>
+                </td>
+            </tr>
+        </table> -->
+        <div class="header">
+            <span class="team_name">Dumbo飞象</span>
+            <!-- <span><a href="www.baidu.com"><img class="s_logo" src="{% static "images/s_logo.png" %}" alt=""></a></span> -->
+            <div class="nav nav1">
+                <ul>
+                    <li>
+                        <a href="#" class="change_color"> 首页</a>
+                    </li>
+                    <li class="current">
+                        <a href="#" class="change_color">韶华追忆</a>
+                        <div class="slist c2" id="s_float">
+                          <dl>
+                                <dd><a href="/travel">足迹</a></dd>
+                                <dd><a href="#">美食</a></dd>
+                                <dd><a href="#">运动</a></dd>
+                                <dd><a href="#">书屋</a></dd>
+                          </dl>
+                        </div>
+                    </li>    
+                    <li>
+                        <a id="s_test"  href="#" class="change_color">技术分享</a>
+                        <div class="slist c2" id="s_float">
+                          <dl>
+                                <dd><a href="#">c＋＋</a></dd>
+                                <dd><a href="#">python</a></dd>
+                                <dd><a href="#" target="_blank">android</a></dd>
+                                <dd><a href="#" target="_blank">docker</a></dd>
+                                <dd><a href="#">前端</a></dd>
+                                <dd><a href="#"></a></dd>
+                          </dl>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="change_color">关于</a>
+                        <div class="slist c2">
+                            <dl>
+                                <dd><a href="#">关于dumbo</a></dd>
+                                <dd><a href="#">项目成果</a></dd>
+                                <dd><a href="#">联系我们</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <span></span>
+            <span></span>
         </div>
-      </div>
-      <script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
-      <script type="text/javascript" src="{% static "js/carousel/index.js" %}"></script> 
-      <script>
-        $("#container").PageSwitch({
-          direction:'horizontal',
-          easing:'ease-in',
-          duration:1000,
-          autoPlay:true,
-          loop:'false'
-        });
-      </script>
 
-      <div class="content-six">
-        <ul class="contentbox-six">
-          <li class="con-six">
-            <img class="conimg-two" src="{% static "images/page1_img1.jpg" %}"/>
-            <div class="txt-six">
-              <h3>图片一</h3>
+        <!-- 主体内容 -->
+        <div id="content">
+            <div class="section  page_one">
+                <img style="left: auto" class="home nav_active_img" src="{% static "images/navimg/nav_1.jpeg" %}" alt="">
+                <img src="{% static "images/navimg/nav_2.jpeg" %}" alt="">
+                <img src="{% static "images/navimg/nav_3.jpeg" %}" alt="">
+                <img src="{% static "images/navimg/nav_4.jpeg" %}" alt="">
+                <span onclick="nav_prev()" class="nav_left"></span>
+                <span onclick="nav_next()" class="nav_right"></span>
             </div>
-          </li>
-          <li class="con-six">
-            <img class="conimg-two" src="{% static "images/page1_img2.jpg" %}"/>
-            <div class="txt-six">
-              <h3>图片二</h3>
-            </div>
-          </li>
-          <li class="con-six">
-            <img class="conimg-two" src="{% static "images/page1_img3.jpg" %}"/>
-            <div class="txt-six">
-              <h3>图片三</h3>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
-      <script type="text/javascript" src="{% static "js/picshade/index.js" %}"></script> 
 
-      <!--轮播滚动-->
-      <div id="www_zzjs_net">
-        <div id="indemo">
-          <div id="demo1" class="content-six">
-            <ul class="contentbox-six">
-              <li class="con-six">
-                <img class="conimg-two" src="{% static "images/page1_img1.jpg" %}"/>
-                <div class="txt-six">
-                  <h3>图片一</h3>
+            <div class="section ">
+                <div class="bg31">
+                    <h3>三大业务</h3>
+                    <p>THREE BUSINESS</p>
                 </div>
-              </li>
-              <li class="con-six">
-                <img class="conimg-two" src="{% static "images/page1_img2.jpg" %}"/>
-                <div class="txt-six">
-                  <h3>图片二</h3>
+                <div class="bg32">
+                    <ul>
+                        <li class="yewu_li_1">
+                            <a href="//v114.butel.com/">
+                                <img src="{% static "images/yewu_1.jpg" %}" alt="微频道 新媒体直播 移动导播机">
+                                <div class="shadow"></div>
+                                <div class="shadow_text">
+                                    微频道：企业互动直播营销平台<br>
+                                    ◎产品发布会<br>
+                                    ◎互联网互动直播教学<br>
+                                    ◎峰会、论坛等活动直播<br>
+                                    ◎众筹路演<br>
+                                    ◎演艺直播<br>
+                                    ◎医疗培训与咨询<br>
+                                    ◎可视电商
+                                </div>
+                            </a>
+                        </li>
+                        <li class="yewu_li_2">
+                            <a href="http://www.jmeeting.cn/" target="_blank">
+                                <img src="{% static "images/yewu_2.jpg" %}" alt="极会议 移动直播">
+                                <div class="shadow"></div>
+                                <div class="shadow_text">
+                                    极会议：可视化办公引领者<br>
+                                    ◎企业日常会议<br>
+                                    ◎商务谈判会议<br>
+                                    ◎移动协同会议<br>
+                                    ◎远程可视招聘<br>
+                                    ◎远程医疗协同<br>
+                                    ◎远程教育培训<br>
+                                    ◎视频社群平台</div>
+                            </a>
+                        </li>
+                        <li class="yewu_li_3">
+                            <a href="//callcenter.butel.com/">
+                                <img src="{% static "images/yewu_3.jpg" %}" alt="可视融合 移动直播 新媒体视频技术"><div class="shadow"></div>
+                                <div class="shadow_text">
+                                可视协同：面对面的客服<br>
+                                ◎VATM<br>
+                                ◎视频面签<br>
+                                ◎视频导购<br>
+                                ◎远程咨询
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-              </li>
-              <li class="con-six">
-                <img class="conimg-two" src="{% static "images/page1_img3.jpg" %}"/>
-                <div class="txt-six">
-                  <h3>图片三</h3>
+            </div>
+            <div class="section  page_three">
+                <div class="page_three_title">
+                    <h3>五大行业</h3>
+                    <p>FIVE INDUSTRIES</p>
                 </div>
-              </li>
-            </ul>
-          </div>
-          <div id="demo2"></div>
+                <div class="page_three_scroll">
+                    <ul style="width:4740px;">
+                        <li>
+                            <a href="//media.butel.com/"><img src="{% static "images/huangye_1.jpg" %}" alt="可视媒体 移动导播机 移动直播"></a>
+                            <h3><a href="//media.butel.com/">可视媒体</a></h3>
+                            <p>直播中国 互动世界！</p>
+                        </li>
+                        <li>
+                            <a href="//solution.butel.com/#agri"><img src="{% static "images/huangye_2.jpg" %}" alt="可视农业、新媒体融合"></a>
+                            <h3><a href="//solution.butel.com/#agri">可视农业</a></h3>
+                            <p>建立全社会“看得见的信任”</p>
+                        </li>
+                        <li>
+                            <a href="//school.butel.com/"><img src="{% static "images/huangye_3.jpg" %}" alt="可视校园、移动导播机、新媒体直播"></a>
+                            <h3><a href="//school.butel.com/">可视校园</a></h3>
+                            <p>多媒体校园动起来！</p>
+                        </li>
+                        <li>
+                            <a href="//health.butel.com/"><img src="{% static "images/huangye_4.jpg" %}" alt="可视医疗、新媒体直播"></a>
+                            <h3><a href="//health.butel.com/">可视医疗</a></h3>
+                            <p>远程医疗的可视通讯平台</p>
+                        </li>
+                        <li>
+                            <a href="//finance.butel.com/"><img src="{% static "images/huangye_5.jpg" %}" alt="可视金融、新媒体视频技术"></a>
+                            <h3><a href="//finance.butel.com/">可视金融</a></h3>
+                            <p>让用户每一笔交易都清晰可见！</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section section6 index_footer">
+                <div class="footer" style="height:100%;">
+                    <div class="lay1188">
+                        <div class="ft-helper">
+                            <dl style="width:350px;">
+                                <dt><a href="javascript:void(0);">Dumbo团队</a></dt>
+                                <dd>
+                                <div class="team_desc">
+                                    Dumbo团队专注从事web，c++，python，android，微信公共号，微信客户端等多个技术方向的研发，目前团队拥有三人，包括研发，测试，美工，欢迎咨询xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx！
+                                </div>
+                                </dd>
+                            </dl>
+                            <dl>
+                              <dt><a href="javascript:void(0);">关于Dumbo</a></dt>
+                              <dd>
+                                <a href="//www.butel.com/about">Dumbo简介</a>
+                                <a href="//www.butel.com/news/">媒体新闻</a>
+                                <a href="//www.butel.com/about/jobs">加入Dumbo</a>
+                              </dd>
+                            </dl>
+                            <dl>
+                              <dt><a href="javascript:void(0);">客户服务</a></dt>
+                              <dd>
+                                <a href="javascript:void(0);">服务热线</a>
+                                <a href="javascript:void(0);">18215629628</a>
+                                <a href="javascript:void(0);" style="position:absolute;">周一至周日9：00-18：00</a>
+                              </dd>
+                            </dl>
+                            <dl style="width:300px;margin-top:125px;margin-left:150px;">
+                              <dt><a href="javascript:void(0);">关注Dumbo</a></dt>
+                              <dd>
+                                <img style="width:300px;height:166px;" src="{% static "images/contact_us.png" %}">
+                              </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="copyright" style="position:absolute;bottom:0;width:100%;">
+                        <p>Dumbo团队©版权所有 京ICP备xxxxxxxx号 京公网安备xxxxxxxxxxxxxx 号.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <script>
-        <!--
-        var speed=10;
-        var tab=document.getElementById("www_zzjs_net");
-        var tab1=document.getElementById("demo1");
-        var tab2=document.getElementById("demo2");
-        tab2.innerHTML=tab1.innerHTML;
-        function Marquee(){
-          if(tab2.offsetWidth-tab.scrollLeft<=0)
-            tab.scrollLeft-=tab1.offsetWidth
-          else{
-            tab.scrollLeft++;
-          }
-        }
-        var MyMar=setInterval(Marquee,speed);
-        tab.onmouseover=function() {clearInterval(MyMar)};
-        tab.onmouseout=function() {MyMar=setInterval(Marquee,speed)};
-        -->
-      </script>
+        <!-- 加载js代码 -->
+        <script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/libs/bootstrap-3.3.7/js/bootstrap.min.js" %}"></script>
+        <!-- <script src="{% static "js/jquery.easing.1.3.js" %}"></script> -->
+        <!-- 实现page页面效果需要 -->
+        <!-- <script src="{% static "js/jquery.scrollify.min.js" %}"></script> -->
+        <script src="{% static "js/jquery.fullPage.min.js" %}"></script>
+        <script type="text/javascript">
+            $(function(){
+                $('#content').fullpage(
+                // {sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90']}
+                {
+                    'navigation': true,
+                    afterLoad: function(anchorLink, index){
+                        $('.nav').css({opacity:1})
+                    },
+                    onLeave: function(index, nextIndex, direction){
+                        $('.nav').css({opacity:0})
+                        if (nextIndex == 2 || nextIndex == 3) {
+                            $('.team_name').addClass('black_nav');
+                            $('.change_color').addClass('black_nav');
+                        }else{
+                            $('.team_name').removeClass('black_nav');
+                            $('.change_color').removeClass('black_nav');
+                        }
+                    }
+                }
+                );
+            });
+            /*图片上左右箭头时间*/
+            function nav_next() {
+                var nav_index=$('.nav_active_img').index();
+                if(nav_index<3){
+                    nav_index++;
+                }else{
+                    nav_index=0;
+                }
+                $('.page_one img').eq(nav_index).addClass('nav_active_img').siblings().removeClass('nav_active_img');
+            }
+            function nav_prev() {
+                var nav_index=$('.nav_active_img').index();
+                if(nav_index>0){
+                    nav_index--;
+                }else{
+                    nav_index=3;
+                }
+                $('.page_one img').eq(nav_index).addClass('nav_active_img').siblings().removeClass('nav_active_img');
+            }
+            var nav_timer=setInterval(nav_next,5000);
+
+            /*图片上左右箭头鼠标放上去事件*/
+            $('.nav_left,.nav_right').hover(
+                function () {
+                    clearInterval(nav_timer);
+                },
+                function () {
+                    nav_timer=setInterval(nav_next,5000);
+                }
+            )
+        </script>
+        <!--page_three-->
+        <script type="text/javascript">
+            var ul=  $(".page_three_scroll ul").eq(0)
+            var w=474;
+            ul.append(ul.children("li").clone())
+            ul.width(ul.find("li").length * w)
+            var timerID= null;
+
+            function move(){
+                ul.animate({left:"-=1"},0,function(){
+                    if(Math.abs(parseInt( ul.css("left") )  ) >= 473){
+                        ul.find("li").slice(0, 1).appendTo($(this));
+                        ul.css("left",0)
+                    }
+                })
+            }
+            ul.hover(
+                function(){
+                    clearInterval(timerID)
+                },
+                function(){
+                    timerID= setInterval(move,30)
+                }).trigger("mouseleave");
+        </script>
     </body>
 </html>
