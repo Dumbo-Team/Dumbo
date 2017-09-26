@@ -1,0 +1,61 @@
+<script type="text/javascript">
+          container = document.getElementByTagName("container");
+          var flag_img_path_str = ""; 
+
+
+          var title_str;
+          var datetime_str;
+          var paragraph_str;
+          var speaking = document.createElement("div");
+          speaking.setAttribute("class","speaking");
+          container.appendChild(speaking);
+          // insertAfter()
+          var title = document.createElement("div");
+          title.setAttribute("class","title");
+          var paragraph = document.createElement("div");
+          paragraph.setAttribute("class","s_paragraph");
+          var pictures = document.createElement("div");          
+          pictures.setAttribute("class","s_pictures");
+          speaking.appendChild(title);
+          speaking.appendChild(paragraph);
+          speaking.appendChild(pictures);
+
+          var span_flag = document.createElement("span");
+          span_flag.setAttribute("class","s_flag");
+          title.appendChild(span_flag);
+          var flag_img = document.createElement("img");
+          flag_img_path_str = "{% static \"" + flag_img_path_str + "\" %}";
+          flag_img.setAttribute("src",flag_img_path_str);
+          flag_img.setAttribute("alt","Big Bote");
+          span_flag.appendChild(flag_img)
+
+          var span_title = document.createElement("span");
+          span_title.setAttribute("class","s_title");
+          title.appendChild(span_title);
+          title_h = document.createElement("h4");
+          title_text = document.createTextNode(title_str);
+          span_title.appendChild(title_h)
+          title_h.appendChild(title_text)
+
+          var span_datatime = document.createElement("span");
+          span_datatime.setAttribute("class","s_datetime");
+          title.appendChild(span_datatime);
+          datetime_p = document.createElement("p");
+          datetime_text = document.createTextNode(datetime_str);
+          span_datatime.appendChild(datetime_p);
+          datetime_p.appendChild(datetime_text);
+
+          paragraph_p = document.createElement("p");
+          paragraph_text = document.createTextNode(paragraph_str);
+          paragraph.appendChild(paragraph_p);
+          paragraph_p.appendChild(paragraph_text);
+          var imgs = new Array();
+          for(var i = 0; i < imgs.length; i++){
+              var img = document.createElement("img");
+              img.setAttribute("class","s_gal");
+              var tme_path = "{% static \"" + imgs[i] + "\" %}";
+              img.setAttribute("src",imgs[i]);
+              img.setAttribute("alt","images");
+              pictures.appendChild(img);
+          }
+          </script>
